@@ -88,3 +88,4 @@ class Credential:
         for credential in cls.credentials_list:
             if credential.site_name == site_name:
                 return credential
+            
