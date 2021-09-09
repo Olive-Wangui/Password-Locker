@@ -40,4 +40,10 @@ def save_credential(credential):
     Function to save a newly created credential
     '''
     Credential.save_credentials(credential)
+    
+def display_credentials(user_name):
+    '''
+    Function that displays credentials saved by the user
+    '''
+    return Credential.display_credentials(user_name)
 
