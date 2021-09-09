@@ -30,3 +30,11 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user.save_user()
         self.assertEqual(len(User.users_list),1)
+        
+class TestCredentials(unittest.TestCase):
+    '''
+    Test class that defines test cases for the credentials class behaviours
+    
+    Args:
+    unittest.TestCase: helps in creating test cases
+    '''
