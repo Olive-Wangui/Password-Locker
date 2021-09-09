@@ -52,7 +52,7 @@ class TestCredentials(unittest.TestCase):
                 current_user = user.first_name
                 return current_user
             
-            self.assertEqual(current_user, Credential.check_user(user2.password, user2.first_name))
+            self.assertEqual(user.first_name, Credential.check_user(user2.password, user2.first_name))
             
     def setUp(self):
         '''
@@ -74,7 +74,7 @@ class TestCredentials(unittest.TestCase):
         Test to check if the new credential info is saved into the credentials
         '''
         self.new_credential.save_credentials()
-        twitter = Credential('Jane', 'Twtitter', 'maryjoe', 'pswd100')
+        twitter = Credential('Jane', 'Twtitter', 'maryjoe', 'lil2000')
         twitter.save_credentials()
         self.assertEqual(len(Credential.credentials_list),2)
         
@@ -98,8 +98,36 @@ class TestCredentials(unittest.TestCase):
         Test to check if the find_by_site_name method returns the correct credential
         '''
         self.new_credential.save_credentials()
-        twitter = Credential('Jane, Twitter', 'maryjoe', 'pswd100')
+        twitter = Credential('Jane, Twitter', 'maryjoe', 'lil2000')
         twitter.save_credentials()
         credential_exists = Credential.find_by_site_name('Twitter')
-        self.assertEqual(credential_exists, twitter)       
+        self.assertEqual(credential_exists, twitter)
+        
+    def test_find_by_site_name(self):
+        '''
+        Test to check if the find_y_site_name method returns the correct credential
+        '''
+        self.new_credential.save_credentials()
+        twitter = Credential('Jane', 'Twitter', 'maryjoe', 'lil2000')
+        twitter.save_credentials()
+        credential_exists = Credential.find_by_site_name('Twitter')
+        self.assertEqual(credential_exists, twitter)
+        
+    def test_copy_credential(self):
+        '''
+        Test to check if the copy credential method copies the correct credential
+        '''
+        self.new_credential.save_credentials()
+        twitter = Credential('Jane', 'Twitter', 'maryjoe', 'lil2000')
+        twitter.save_credentials()
+        find_credential = None
+        for credential in Credential.user_credentials_list:
+            find_credential = Credential.find_by_site_name(credential.site_name)
+            return pyperclip.copy(find_credential.password)
+        Credential.copy_credentials(self.new_credential.site_name)
+        self.assertEqual('lil2000', pyperclip.paste())
+        print(pyperclip.paste())
+        
+if __name__ == '__main__':
+    unittest.main(verbosity=2)      
     
