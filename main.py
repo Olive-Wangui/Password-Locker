@@ -13,6 +13,7 @@ def save_user(user):
     Function to save a new user account
     '''
     User.save_user(user)
+     
     
 def verify_user(first_name, password):
     '''
@@ -30,7 +31,7 @@ def generate_password():
 
 def create_credential(user_name, site_name, account_name, password):
     '''
-    Function that creates new credentials
+    Function that creates new credential
     '''
     new_credential = Credential(user_name, site_name, account_name, password)
     return new_credential
@@ -43,13 +44,13 @@ def save_credential(credential):
     
 def display_credentials(user_name):
     '''
-    Function that displays credentials saved by the user
+    Function that displays credentials saved by a user
     '''
     return Credential.display_credentials(user_name)
 
 def copy_credentials(site_name):
     '''
-    Function to copy the credentials details to the clipboard
+    Function to copy credentials details to the clipboard
     '''
     return Credential.copy_credential(site_name)
 

@@ -18,7 +18,7 @@ class TestUser(unittest.TestCase):
         
     def test__init__(self):
         '''
-        Test to see if the initialization of the user instance is well done
+        Test to see if the initialization of the user instances is well done
         '''
         self.assertEqual(self.new_user.first_name, 'Olive')
         self.assertEqual(self.new_user.last_name, 'Wangui')
@@ -26,7 +26,7 @@ class TestUser(unittest.TestCase):
         
     def test_save_user(self):
         '''
-        Test to check if the new users information is saved as required
+        Test to check if the new users information is saved into the users list
         '''
         self.new_user.save_user()
         self.assertEqual(len(User.users_list),1)
@@ -40,16 +40,16 @@ class TestCredentials(unittest.TestCase):
     '''
     def test_check_user(self):
         '''
-        Function to test whether the log in function check_user works as expected
+        Function to test whether the login function check_user works as expected
         '''
         self.new_user = User('Olive', 'Wangui', 'lil2000')
         self.new_user.save_user()
-        user2 = User('Ian', 'Gitonga', 'lil2000')
+        user2 = User('Ian', 'Wangui', 'lil2000')
         user2.save_user()
         
         for user in User.users_list:
-            if user.first_name == user2.first_name and user.password == user2.password:
-                current_user = user.first_name
+            if user.last_name == user2.last_name and user.password == user2.password:
+                current_user = user.last_name
                 return current_user
             
             self.assertEqual(user.first_name, Credential.check_user(user2.password, user2.first_name))
@@ -98,14 +98,14 @@ class TestCredentials(unittest.TestCase):
         Test to check if the find_by_site_name method returns the correct credential
         '''
         self.new_credential.save_credentials()
-        twitter = Credential('Jane, Twitter', 'maryjoe', 'lil2000')
+        twitter = Credential('Jane', 'Twitter', 'maryjoe', 'lil2000')
         twitter.save_credentials()
         credential_exists = Credential.find_by_site_name('Twitter')
         self.assertEqual(credential_exists, twitter)
         
     def test_find_by_site_name(self):
         '''
-        Test to check if the find_y_site_name method returns the correct credential
+        Test to check if the find_by_site_name method returns the correct credential
         '''
         self.new_credential.save_credentials()
         twitter = Credential('Jane', 'Twitter', 'maryjoe', 'lil2000')

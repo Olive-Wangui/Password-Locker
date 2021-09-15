@@ -6,7 +6,7 @@ import string
 global users_list
 class User:
     '''
-    Class to create user accounts and save information
+    Class to create user accounts and save their information
     '''
     # Class Variables
     # Global users_list
@@ -21,15 +21,15 @@ class User:
         self.last_name = last_name
         self.password = password
         
-        def save_user(self):
-            '''
-            Function to save a newly created user instance
-            '''
-            User.users_list.append(self)
+    def save_user(self):
+        '''
+        Function to save a newly created user instance
+        '''
+        User.users_list.append(self)
             
 class Credential:
     '''
-    Class to create account credentials, generate passwords and save the information acquired
+    Class to create account credentials, generate passwords and save their information
     '''
     # Class Variables
     credentials_list = []
