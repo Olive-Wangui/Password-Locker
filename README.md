@@ -1,7 +1,7 @@
 # PASSWORD LOCKER
 
 ## Created by:
-#### OLIVE WANGUO
+#### OLIVE WANGUI
 
 ## Description
 An application that helps us manage our passcodes and even generate new passcodes for us.
